@@ -7,6 +7,7 @@
 **/bin/
 **/obj/
 .build-check/
+.build-check-*/
 
 # Local database and environment files
 *.db
