@@ -9,4 +9,15 @@ Ce dépôt est dédié au TP5 du cours d'API Web.
 - Framework cible demandé par le cours : `.NET 8.0`
 - Branche principale : `main`
 
-Le cours `Chapitre5_APIWEB.pdf` servira de référence pour ajouter progressivement les modèles, le contexte Entity Framework, les repositories et les contrôleurs API. La branche d'atelier sera créée après réception de l'énoncé de l'atelier 5.
+Le cours `Chapitre5_APIWEB.pdf` est intégré dans le projet API : modèles, contexte Entity Framework, repositories, contrôleurs API, validation, recherche et migration initiale. La branche d'atelier sera complétée avec l'énoncé de l'atelier 5.
+
+## Routes principales
+
+- `GET /api/Employees`
+- `GET /api/Employees/{id}`
+- `GET /api/Employees/search?name=...`
+- `POST /api/Employees`
+- `PUT /api/Employees/{id}`
+- `DELETE /api/Employees/{id}`
+- `GET /api/Departments`
+- `GET /api/Departments/{id}`

@@ -6,6 +6,7 @@
 # .NET build output
 **/bin/
 **/obj/
+.build-check/
 
 # Local database and environment files
 *.db
