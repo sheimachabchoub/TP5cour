@@ -78,6 +78,62 @@ namespace TP5.Api.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("TP5.Api.Models.Genre", b =>
+                {
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("TP5.Api.Models.Movie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte>("GenreId")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte[]>("Poster")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<double>("Rate")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Storeline")
+                        .IsRequired()
+                        .HasMaxLength(2500)
+                        .HasColumnType("nvarchar(2500)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("Movies");
+                });
+
             modelBuilder.Entity("TP5.Api.Models.Employee", b =>
                 {
                     b.HasOne("TP5.Api.Models.Department", "Department")
@@ -89,9 +145,25 @@ namespace TP5.Api.Migrations
                     b.Navigation("Department");
                 });
 
+            modelBuilder.Entity("TP5.Api.Models.Movie", b =>
+                {
+                    b.HasOne("TP5.Api.Models.Genre", "Genre")
+                        .WithMany("Movies")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+                });
+
             modelBuilder.Entity("TP5.Api.Models.Department", b =>
                 {
                     b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("TP5.Api.Models.Genre", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

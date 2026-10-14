@@ -21,3 +21,15 @@ Le cours `Chapitre5_APIWEB.pdf` est intégré dans le projet API : modèles, con
 - `DELETE /api/Employees/{id}`
 - `GET /api/Departments`
 - `GET /api/Departments/{id}`
+
+## Atelier Movies API
+
+La branche `tp5_atelier_seance2` ajoute :
+
+- `Genre` et `Movie` avec relation Entity Framework ;
+- services `GenresService` et `MoviesService` ;
+- DTO et mapping AutoMapper ;
+- upload d'affiche `.png` ou `.jpg` de 1 Mo maximum ;
+- endpoints CRUD `api/Genres` et `api/Movies` ;
+- filtre `GET /api/Movies?genreId=...` ;
+- CORS ouvert pour les clients de l'API.

@@ -11,6 +11,8 @@ public class AppDbContext : DbContext
 
     public DbSet<Employee> Employees { get; set; } = null!;
     public DbSet<Department> Departments { get; set; } = null!;
+    public DbSet<Genre> Genres { get; set; } = null!;
+    public DbSet<Movie> Movies { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,5 +27,15 @@ public class AppDbContext : DbContext
             .WithMany(department => department.Employees)
             .HasForeignKey(employee => employee.DepartmentId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Movie>()
+            .HasOne(movie => movie.Genre)
+            .WithMany(genre => genre.Movies)
+            .HasForeignKey(movie => movie.GenreId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Movie>()
+            .Property(movie => movie.Poster)
+            .HasColumnType("varbinary(max)");
     }
 }
