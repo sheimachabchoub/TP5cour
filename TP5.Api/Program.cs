@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TP5.Api.Data;
 using TP5.Api.Models;
 using TP5.Api.Models.Repositories;
 
@@ -26,5 +27,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    await DbInitializer.InitializeAsync(scope.ServiceProvider);
+}
 
 app.Run();
