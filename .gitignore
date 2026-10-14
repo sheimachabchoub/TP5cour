@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Local database and environment files
+*.db
+*.db-shm
+*.db-wal
+appsettings.Local.json
