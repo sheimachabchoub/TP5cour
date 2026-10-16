@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using TP5.Api.Models;
 
 namespace TP5.Api.Data;
@@ -8,7 +9,21 @@ public static class DbInitializer
     public static async Task InitializeAsync(IServiceProvider serviceProvider)
     {
         var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
-        await context.Database.MigrateAsync();
+
+        // LocalDB peut mettre quelques secondes à démarrer avec Visual Studio.
+        // On retente la connexion pour éviter que l'API s'arrête pendant ce délai.
+        for (var attempt = 1; ; attempt++)
+        {
+            try
+            {
+                await context.Database.MigrateAsync();
+                break;
+            }
+            catch (SqlException) when (attempt < 5)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(2));
+            }
+        }
 
         if (await context.Genres.AnyAsync()) return;
 
