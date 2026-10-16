@@ -3,7 +3,7 @@ using TP5.Api.Models;
 
 namespace TP5.Api.Services;
 
-public class GenresService(AppDbContext context) : IGenresService
+public class GenresService(ApplicationDbContext context) : IGenresService
 {
     public async Task<IEnumerable<Genre>> GetAll() =>
         await context.Genres.OrderBy(genre => genre.Name).AsNoTracking().ToListAsync();

@@ -22,9 +22,15 @@ Le cours `Chapitre5_APIWEB.pdf` est intégré dans le projet API : modèles, con
 - `GET /api/Departments`
 - `GET /api/Departments/{id}`
 
-## Atelier Movies API
+## Séparation de l'atelier Movies API
 
-La branche `tp5_atelier_seance2` ajoute :
+La branche `main` contient uniquement le projet du cours. La branche `tp5_atelier_seance2` contient uniquement l'atelier Movies, dans un projet séparé :
+
+- Solution : `TP5-Atelier5.slnx` ;
+- Projet : `TP5.Atelier5` ;
+- Base de données : `MoviesAtelier5`.
+
+L'atelier contient :
 
 - `Genre` et `Movie` avec relation Entity Framework ;
 - services `GenresService` et `MoviesService` ;

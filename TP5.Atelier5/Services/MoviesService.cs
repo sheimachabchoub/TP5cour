@@ -3,7 +3,7 @@ using TP5.Api.Models;
 
 namespace TP5.Api.Services;
 
-public class MoviesService(AppDbContext context) : IMoviesService
+public class MoviesService(ApplicationDbContext context) : IMoviesService
 {
     public async Task<IEnumerable<Movie>> GetAll(byte genreId = 0) =>
         await context.Movies

@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace TP5.Api.Migrations
+namespace TP5.Atelier5.Migrations
 {
     /// <inheritdoc />
-    public partial class MoviesFeatures : Migration
+    public partial class InitialMovies : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

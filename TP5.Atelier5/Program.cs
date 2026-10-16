@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using TP5.Api.Helpers;
 using TP5.Api.Data;
 using TP5.Api.Models;
-using TP5.Api.Models.Repositories;
 using TP5.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IGenresService, GenresService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
